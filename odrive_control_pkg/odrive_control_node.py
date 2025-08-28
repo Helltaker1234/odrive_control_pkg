@@ -62,8 +62,8 @@ class Motor(Node):
             time.sleep(3)
         else:
             self.get_logger().info("Twist: Linear: %f Angular velocity: %f" % (msg.linear.x, msg.angular.z))
-            self.odrv0.axis0.controller.input_vel = -(msg.linear.x + msg.angular.z * self.wheelSeperation/2) / (self.wheelDiameter * 3.1415)
-            self.odrv0.axis1.controller.input_vel = (msg.linear.x - msg.angular.z * self.wheelSeperation/2) / (self.wheelDiameter * 3.1415)
+            self.odrv0.axis0.controller.input_vel = (msg.linear.x - msg.angular.z * self.wheelSeperation/2) / (self.wheelDiameter * 3.1415)
+            self.odrv0.axis1.controller.input_vel = (msg.linear.x + msg.angular.z * self.wheelSeperation/2) / (self.wheelDiameter * 3.1415)
 
     def getEncoderData(self, command):
         self.ser.write(command.encode())
